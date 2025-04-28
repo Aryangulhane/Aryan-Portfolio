@@ -1,0 +1,1278 @@
+/* ===================================================
+   1. Global Reset and Base Styles
+   =================================================== */
+
+   * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    scroll-behavior: smooth;
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--background-light);
+    color: var(--text-light);
+    line-height: 1.6;
+}
+
+/* ===================================================
+   2. CSS Variables (Light and Dark Modes)
+   =================================================== */
+
+:root {
+    --primary-color: #3d1086;
+    --secondary-color: #ff6f61;
+    --background-light: #f5f5f5;
+    --background-dark: #121212;
+    --text-light: #333333;
+    --text-dark: #e0e0e0;
+    --accent-light: #ffffff;
+    --accent-dark: #1e1e1e;
+}
+
+/* Dark Mode Variables Overwrite */
+body.dark {
+    background-color: var(--background-dark);
+    color: var(--text-dark);
+}
+
+
+/* ===================================================
+   3. Typography Styles
+   =================================================== */
+
+/* Links */
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--secondary-color);
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+/* Paragraphs */
+p {
+    font-size: 1rem;
+    color: var(--text-light);
+}
+
+/* Dark Mode Typography Adjustments */
+body.dark a {
+    color: var(--secondary-color);
+}
+body.dark a:hover {
+    color: var(--primary-color);
+}
+
+body.dark p {
+    color: var(--text-dark);
+}
+
+/* ===================================================
+   4. Layout Styles
+   =================================================== */
+
+/* General Section Layout */
+section {
+    width: 100%;
+    max-width: 1400px;
+    margin: 20px auto;
+    padding: 50px;
+    background-color: var(--accent-light);
+    border-radius: 10px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    animation: fadeIn 0.8s ease-out;
+}
+
+/* Section Heading */
+section h2 {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Section Paragraph */
+section p {
+    font-size: 1rem;
+    color: #555555;
+    text-align: center;
+}
+
+/* Section Unordered Lists */
+section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+section ul li {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    color: var(--text-light);
+}
+
+/* Dark Mode Section Overrides */
+body.dark section {
+    background-color: var(--accent-dark);
+    color: var(--text-dark);
+}
+
+body.dark section ul li {
+    color: var(--text-dark);
+}
+
+/* --------------------------------------------------- */
+/* Hero Section Styles */
+/* --------------------------------------------------- */
+/* Hero Section */
+#hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100vh;
+    padding: 0 50px;
+    background: linear-gradient(135deg, rgba(30, 30, 47, 0), rgba(42, 42, 64, 0));
+    color: #fff;
+    overflow: hidden;
+}
+
+/* Left Side (Text) */
+.hero-left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 1;
+}
+
+.hero-title {
+    font-size: 3rem;
+    font-weight: bold;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.hero-title .line {
+    display: block;
+    transform: translateY(100%);
+    animation: slideIn 1s ease-out forwards;
+    color: #ffffff;
+}
+
+.hero-title .line:nth-child(1) {
+    animation-delay: 0.2s;
+}
+
+.hero-title .line:nth-child(2) {
+    animation-delay: 0.4s;
+}
+
+.hero-title .highlight {
+    color: #ffffff;
+    font-size: 3rem;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    color: #ccc;
+    margin-bottom: 30px;
+    opacity: 0;
+    animation: fadeIn 1s ease-out forwards;
+    animation-delay: 0.6s;
+}
+
+.cta-button {
+    background-color: #ff6f61;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 15px 30px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    opacity: 0;
+    animation: fadeIn 1s ease-out forwards;
+    animation-delay: 0.8s;
+}
+
+.cta-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 10px 20px rgba(255, 111, 97, 0.5);
+}
+
+/* Right Side (Image) */
+.hero-right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.image-container {
+    width: 450px;
+    height: 450px;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+    transform: scale(0.8);
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.image-container:hover {
+    transform: scale(1);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+}
+
+.image-container:hover img {
+    transform: scale(1.1);
+}
+
+/* Animations */
+@keyframes slideIn {
+    0% {
+        transform: translateY(100%);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+
+/* --------------------------------------------------- */
+/* Navbar Styles */
+/* --------------------------------------------------- */
+
+#navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--background-light);
+    color: var(--text-light);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+/* Dark Mode Navbar */
+body.dark #navbar {
+    background-color: var(--background-dark);
+    color: var(--text-dark);
+    box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1);
+}
+
+/* Navbar Floating (on Scroll) */
+#navbar.floating {
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 1200px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Navbar Links */
+#navbar ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#navbar ul li {
+    margin: 0 15px;
+}
+
+#navbar ul li a {
+    text-decoration: none;
+    color: var(--primary-color);
+    font-weight: bold;
+    font-size: 1rem;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#navbar ul li a:hover {
+    color: #ffffff;
+    background-color: var(--secondary-color);
+}
+
+/* Dark Mode Toggle Button */
+#darkModeToggle {
+    background-color: #ffffff;
+    color: #000000;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 15px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#darkModeToggle:hover {
+    background-color: #000000;
+    color: #ffffff;
+    transform: scale(1.05);
+}
+
+
+/* ===================================================
+   5. Components
+   =================================================== */
+/* Internship Section */
+#internship {
+    padding: 50px;
+    background-color: var(--accent-light);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center;
+}
+
+body.dark #internship {
+    background-color: var(--accent-dark);
+    color: var(--text-dark);
+}
+
+/* Internship Cards Container */
+.internship-cards {
+    display: flex;
+    justify-content: space-around;
+    gap: 10px;
+    flex-wrap: wrap; /* Ensure responsiveness */
+}
+
+/* Individual Internship Card */
+.internship-card {
+    background-color: var(--accent-light);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 500px; /* Portrait size */
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+body.dark .internship-card {
+    background-color: var(--accent-dark);
+    color: var(--text-dark);
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+}
+
+.internship-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Internship Card Image */
+.internship-card img {
+    width: 100%;
+    height: 200px; /* Adjust height for portrait size */
+    object-fit: cover;
+    border-bottom: 2px solid var(--primary-color);
+}
+
+/* Internship Card Content */
+.card-content {
+    padding: 20px;
+}
+
+.card-content h3 {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.card-content p {
+    font-size: 1rem;
+    color: var(--text-light);
+    line-height: 1.5;
+}
+
+body.dark .card-content p {
+    color: var(--text-dark);
+}
+
+
+
+/* Skills Section */
+#skills {
+    padding: 50px;
+    background-color: var(--accent-light);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center;
+}
+
+body.dark #skills {
+    background-color: var(--accent-dark);
+    color: var(--text-dark);
+}
+
+/* Skills Container */
+.skills-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+/* Skill Category */
+.skill-category {
+    text-align: center;
+}
+
+.skill-category h3 {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+/* Skill Tags */
+.skill-tags {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.skill-tags span {
+    display: inline-block;
+    padding: 10px 15px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #ffffff;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: floatSkill 3s ease-in-out infinite;
+    cursor: pointer;
+}
+
+/* Hover Effect */
+.skill-tags span:hover {
+    transform: scale(1.2) rotate(5deg);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 25px var(--primary-color);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Dark Mode Skill Tags */
+body.dark .skill-tags span {
+    background: linear-gradient(90deg, #ff6f61, #3d1086);
+}
+
+/* Floating Animation */
+@keyframes floatSkill {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Extra-Curricular Section */
+#extra-curricular {
+    padding: 50px;
+    background-color: var(--accent-light);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center;
+}
+
+body.dark #extra-curricular {
+    background-color: var(--accent-dark);
+    color: var(--text-dark);
+}
+
+/* Extra-Curricular Container */
+.extra-curricular-container {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    flex-wrap: wrap; /* Ensure responsiveness */
+}
+
+/* Extra-Curricular Card */
+.extra-card {
+    background-color: var(--accent-light);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 400px; /* Adjusted width */
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding: 20px;
+}
+
+body.dark .extra-card {
+    background-color: var(--accent-dark);
+    color: var(--text-dark);
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+}
+
+.extra-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Card Title */
+.extra-card h3 {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+/* Card Description */
+.extra-card p {
+    font-size: 1rem;
+    color: var(--text-light);
+    line-height: 1.5;
+}
+
+body.dark .extra-card p {
+    color: var(--text-dark);
+}
+
+
+/* Achievements Section */
+#achievements {
+    padding: 50px;
+    background-color: var(--accent-light);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center;
+}
+
+body.dark #achievements {
+    background-color: var(--accent-dark);
+    color: var(--text-dark);
+}
+
+/* Achievements Container */
+.achievements-container {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    flex-wrap: wrap; /* Ensure responsiveness */
+}
+
+/* Achievement Card */
+.achievement-card {
+    background-color: var(--accent-light);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 400px;
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding: 20px;
+}
+
+body.dark .achievement-card {
+    background-color: var(--accent-dark);
+    color: var(--text-dark);
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+}
+
+.achievement-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Card Title */
+.achievement-card h3 {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+/* Card Description */
+.achievement-card p {
+    font-size: 1rem;
+    color: var(--text-light);
+    line-height: 1.5;
+}
+
+body.dark .achievement-card p {
+    color: var(--text-dark);
+}
+
+
+
+
+/* Interests Section */
+#interests {
+    padding: 50px;
+    background-color: var(--accent-light);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+body.dark #interests {
+    background-color: var(--accent-dark);
+    color: var(--text-dark);
+}
+
+/* Interests Container */
+.interests-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap; /* Ensure responsiveness */
+    margin-top: 20px;
+}
+
+/* Interest Card */
+.interest-card {
+    background-color: var(--accent-light);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 15px 20px;
+    width: 200px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+body.dark .interest-card {
+    background-color: var(--accent-dark);
+    color: var(--text-dark);
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+}
+
+.interest-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.interest-card h3 {
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    margin: 0;
+}
+
+
+
+
+
+/* --------------------------------------------------- */
+/* Buttons and General Button Styles */
+/* --------------------------------------------------- */
+
+button, .btn {
+    background-color: var(--primary-color);
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button:hover, .btn:hover {
+    background-color: var(--secondary-color);
+    transform: scale(1.05);
+}
+
+/* --------------------------------------------------- */
+/* Project Cards */
+/* --------------------------------------------------- */
+
+.project-card {
+    background-color: var(--accent-light);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 20px;
+}
+
+.project-card:hover {
+    transform: perspective(1000px) rotateX(5deg) rotateY(-5deg);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.project-card h3 {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.project-card p {
+    font-size: 1rem;
+    color: var(--text-light);
+}
+
+/* Dark Mode Project Card */
+body.dark .project-card {
+    background-color: var(--accent-dark);
+    color: var(--text-dark);
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+}
+
+body.dark .project-card p {
+    color: var(--text-dark);
+}
+
+/* --------------------------------------------------- */
+/* Floating Action Button (FAB) */
+/* --------------------------------------------------- */
+
+.fab-container {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 1000;
+}
+
+.fab-link {
+    background-color: var(--primary-color);
+    color: #ffffff;
+    border-radius: 50%;
+    padding: 15px;
+    font-size: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.fab-link:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-5px);
+}
+
+/* --------------------------------------------------- */
+/* Back To Top Button */
+/* --------------------------------------------------- */
+
+#back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 80px;
+    background-color: #000000;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    padding: 10px 15px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: none; /* Hidden by default */
+    z-index: 1000;
+    transition: transform 0.3s ease;
+}
+
+#back-to-top:hover {
+    transform: scale(1.1);
+}
+
+
+/* ===================================================
+   6. Animations
+   =================================================== */
+
+/* --------------------------------------------------- */
+/* Fade In Animation (General Purpose) */
+/* --------------------------------------------------- */
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --------------------------------------------------- */
+/* Glow Animation (Hero Heading) */
+/* --------------------------------------------------- */
+
+@keyframes glow {
+    0% {
+        text-shadow: 0 0 5px #ffffff, 0 0 10px #192980, 0 0 20px var(--primary-color), 0 0 30px var(--primary-color);
+    }
+    50% {
+        text-shadow: 0 0 10px #fcf4f3, 0 0 20px #3a318a, 0 0 30px var(--primary-color), 0 0 40px var(--primary-color);
+    }
+}
+
+/* --------------------------------------------------- */
+/* Typing Animation (Subtitle Typewriter Effect) */
+/* --------------------------------------------------- */
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes blink {
+    from, to {
+        border-color: transparent;
+    }
+    50% {
+        border-color: #ffffff;
+    }
+}
+
+/* --------------------------------------------------- */
+/* Floating Animation (Hero Image, Hero Content) */
+/* --------------------------------------------------- */
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* --------------------------------------------------- */
+/* Bounce Animation (Scroll Indicator Arrow) */
+/* --------------------------------------------------- */
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0) rotate(-45deg);
+    }
+    50% {
+        transform: translateY(10px) rotate(-45deg);
+    }
+}
+
+/* --------------------------------------------------- */
+/* Pulse Animation (Scroll Indicator Text) */
+/* --------------------------------------------------- */
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+/* --------------------------------------------------- */
+/* Skill Bar Fill Animation */
+/* --------------------------------------------------- */
+
+@keyframes fillBar {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+/* ===================================================
+   7. Scrollbar Styling
+   =================================================== */
+
+/* Custom Scrollbar (Webkit Browsers) */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #000000;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* ===================================================
+   8. Scroll Indicator (Bottom of Hero Section)
+   =================================================== */
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: fadeIn 2s ease-in-out;
+}
+
+.scroll-indicator span {
+    font-size: 2.2rem;
+    color: #ffffff;
+    font-weight: bold;
+    margin-bottom: 10px;
+    animation: pulse 1.5s infinite;
+}
+
+.scroll-indicator .arrow {
+    width: 20px;
+    height: 20px;
+    border-left: 3px solid #ffffff;
+    border-bottom: 3px solid #ffffff;
+    transform: rotate(-45deg);
+    animation: bounce 1.5s infinite;
+}
+
+/* ===================================================
+   9. Skills Section (Skill Bars)
+   =================================================== */
+
+.skill {
+    margin: 20px 0;
+}
+
+.skill-bar {
+    width: 100%;
+    height: 10px;
+    background: #e0e0e0;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+/* Skill Bar Fill */
+.skill-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    width: 0;
+    animation: fillBar 2s ease forwards;
+}
+
+/* Dark Mode Skills */
+body.dark .skill-bar {
+    background: #333333;
+}
+
+/* ===================================================
+   10. Responsive Design (Media Queries)
+   =================================================== */
+
+   @media (max-width: 768px) {
+
+    /* Hero Section Mobile */
+    #hero h1 {
+        font-size: 2rem;
+    }
+
+    #hero h2 {
+        font-size: 1.2rem;
+    }
+
+    /* Navbar Links Stack Vertically */
+    #navbar ul {
+        flex-direction: column;
+    }
+
+    #navbar ul li {
+        margin: 10px 0;
+    }
+        /* Skills Section Mobile */
+        .skills-container {
+            flex-direction: column;
+            gap: 20px;
+        }
+    
+        .skill-tags {
+            justify-content: center;
+        }
+    
+        .skill-tags span {
+            font-size: 0.9rem;
+            padding: 8px 12px;
+        }
+    
+        /* Internship Cards Mobile */
+        .internship-cards {
+            flex-direction: column;
+            align-items: center;
+        }
+    
+        .internship-card {
+            width: 90%; /* Full width on smaller screens */
+        }
+
+    /* Section Padding for Mobile */
+    section {
+        padding: 50px 20px;
+        margin: 20px 0;
+    }
+
+    /* Cards and Projects Full Width */
+    .project-card, .card {
+        width: 100%;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .extra-curricular-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .extra-card {
+        width: 90%; /* Full width on smaller screens */
+        height: auto;
+    }
+
+    .extra-card h3 {
+        font-size: 1.2rem;
+    }
+
+    .extra-card p {
+        font-size: 0.9rem;
+    }
+}
+
+
+@media (max-width: 768px) {
+    #hero {
+        flex-direction: column;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .hero-left, .hero-right {
+        flex: none;
+        width: 100%;
+    }
+
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
+
+    .image-container {
+        width: 200px;
+        height: 200px;
+        margin-top: 20px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+/* ===================================================
+   11. Particle Background Setup
+   =================================================== */
+
+   #particles-js {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 0; /* Ensure it stays behind all content */
+    background: #000; /* Optional: Set a background color */
+    pointer-events: auto; /* Allow interactions with particles */
+}
+
+/* Loading Animation */
+#loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--background-dark); /* Use dark background for loading */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000; /* Ensure it stays above all other elements */
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid var(--text-dark); /* Outer border color */
+    border-top: 5px solid var(--primary-color); /* Spinner color */
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+/* Spinner Animation */
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
+
+/* Education Section */
+#education {
+    background: linear-gradient(to bottom, #87ceeb, #f5f5f5); /* Sky gradient */
+    position: relative;
+    padding: 50px;
+    background-color: var(--accent-light);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+body.dark #education {
+    background-color: var(--accent-dark);
+    color: var(--text-dark);
+}
+
+/* Path Container */
+.education-path {
+    position: relative;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Track (Road) */
+.track {
+    position: relative;
+    width: 100%;
+    height: 40px; /* Height of the road */
+    background: linear-gradient(to right, #555555, #444444); /* Road color */
+    border-radius: 40px; /* Rounded edges for the road */
+    margin-bottom: 20px;
+    overflow: hidden;
+    box-shadow: inset 0 4px 10px rgba(0, 0, 0, 0.5); /* Add depth to the road */
+}
+
+/* Lane Markings */
+.track::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: repeating-linear-gradient(
+        to right,
+        #ffffff,
+        #ffffff 20px,
+        transparent 20px,
+        transparent 40px
+    );
+    transform: translateY(-50%);
+    z-index: 1;
+}
+
+/* Moving Car */
+.car {
+    position: absolute;
+    top: -30px; /* Part of the car is above the track */
+    left: 0;
+    width: 120px; /* Adjust car size */
+    height: auto;
+    animation: moveCar 5s ease-in-out infinite;
+    z-index: 3; /* Ensure the car is above the road */
+    transform-origin: center; /* For smooth animation */
+}
+
+/* Destinations */
+.destinations {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.destination {
+    text-align: center;
+    flex: 1;
+}
+
+.destination h3 {
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    margin-bottom: 5px;
+}
+
+.destination p {
+    font-size: 1rem;
+    color: var(--text-light);
+}
+
+body.dark .destination p {
+    color: var(--text-dark);
+}
+
+/* Car Animation */
+@keyframes moveCar {
+    0% {
+        left: 0;
+        transform: rotate(-5deg); /* Slight tilt at the start */
+    }
+    33% {
+        left: 33%;
+        transform: rotate(0deg); /* Straighten the car */
+    }
+    66% {
+        left: 66%;
+        transform: rotate(5deg); /* Slight tilt at the end */
+    }
+    100% {
+        left: 100%;
+        transform: rotate(0deg); /* Straighten the car */
+    }
+}
